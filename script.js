@@ -18,25 +18,25 @@ const commands = {
       <p><b>Environment:</b> Arch Linux (Hyprland), Git, ONNX, RKNN</p>
     </div>`,
   projects: `
-    <a href="https://yash-vekariya04.github.io/Portfolio/">
+    <a href="https://yash-vekariya04.github.io/Portfolio/" target="_blank">
         <div class="card">
         <h4>1. Portfolio</h4>
         <p></p>
         </div>
     </a>
-    <a href="https://yash-vekariya04.github.io/Portfolio/">
+    <a href="https://yash-vekariya04.github.io/Portfolio/" target="_blank">
         <div class="card">
         <h4>1. Edge Detection Drone Pipeline</h4>
         <p>YOLOv8 vision pipeline fine-tuned on aerial datasets and deployed via ONNX/RKNN on embedded NPU hardware.</p>
         </div>
     </a>
-    <a href="https://yash-vekariya04.github.io/Portfolio/">
+    <a href="https://yash-vekariya04.github.io/Portfolio/" target="_blank">
         <div class="card">
         <h4>2. AI Crop Recommendation Backend</h4>
         <p>Smart India Hackathon project analyzing soil and climate metrics using Scikit-learn and Pandas.</p>
         </div>
     </a>
-    <a href="https://yash-vekariya04.github.io/Portfolio/">
+    <a href="https://yash-vekariya04.github.io/Portfolio/" target="_blank">
         <div class="card">
         <h4>3. Local Voice Assistant</h4>
         <p>FastAPI WebSocket architecture executing local LLMs with Edge-TTS speech output.</p>
@@ -51,13 +51,10 @@ cliInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     const cmd = cliInput.value.trim().toLowerCase();
     runCommand(cmd);
-    cliInput.value = '';
+    cliInput.value = ''; //cleaning the input for next command
   }
 });
 
-// cliInput.addEventListener('click', (c) => {
-//     if (c.clientX)
-// })
 
 function runCommand(cmd) {
   if (cmd === 'clear') {
