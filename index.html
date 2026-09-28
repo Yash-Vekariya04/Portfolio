@@ -3,91 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Yash Vekariya // System Terminal</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">MyPortfolio</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Background Matrix Effect Canvas -->
+  <canvas id="matrix-canvas"></canvas>
 
-  <!-- Hero / Introduction Section -->
-  <header class="hero">
-    <h1>Hi, I'm <span class="highlight">Alex</span></h1>
-    <p>A passionate beginner developer building web applications.</p>
-    <a href="#projects" class="btn">View My Work</a>
-  </header>
+  <main class="terminal-container">
+    <!-- Terminal Header Bar -->
+    <header class="terminal-header">
+      <div class="window-controls">
+        <span class="control close"></span>
+        <span class="control minimize"></span>
+        <span class="control maximize"></span>
+      </div>
+      <div class="window-title">yash@nit-agartala:~ (zsh)</div>
+      <div class="status-indicator"><span class="pulse"></span> ONLINE</div>
+    </header>
 
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      Welcome to my portfolio! I'm currently learning frontend development and building projects with HTML, CSS, and JavaScript. I love solving problems, exploring new technologies, and crafting clean user experiences.
-    </p>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      
-      <div class="project-card">
-        <h3>Weather App</h3>
-        <p>A web app that fetches real-time weather details for any city using a REST API.</p>
-        <span class="tag">JavaScript</span>
+    <!-- Terminal Output Window -->
+    <section class="terminal-body" id="terminal-output">
+      <div class="banner">
+        <pre>
+__   ___   ____  _   _   __   _______ _  __   _    ____   ________   ___
+\ \ / /_\ / ___|| | | |  \ \ / / ____| |/ /  /_\  | |_ \ |_  __|\ \ / /_\ 
+ \ V / _ \\___ \| |_| |   \ V /|  _| | ' <| / _ \ | |_) | _| |_  \ V / _ \
+  |_/_/ \_\____/|_|_|_|    \_/ |_____|_|\_\/_/ \_\| | \_\|_____|  |_/_/ \_\
+        </pre>
+        <p class="subtitle">Mathematics & Computing @ NIT Agartala | AI & Systems Developer</p>
+        <p class="hint">Type <span class="accent">'help'</span> or click the command chips below to navigate.</p>
       </div>
 
-      <div class="project-card">
-        <h3>To-Do List</h3>
-        <p>A simple productivity tool to manage daily tasks with local storage persistence.</p>
-        <span class="tag">HTML/CSS</span>
+      <div class="command-chips">
+        <button onclick="runCommand('about')">about</button>
+        <button onclick="runCommand('skills')">skills</button>
+        <button onclick="runCommand('projects')">projects</button>
+        <button onclick="runCommand('clear')">clear</button>
       </div>
 
-      <div class="project-card">
-        <h3>Personal Blog</h3>
-        <p>A responsive multi-page static website sharing tutorials and personal notes.</p>
-        <span class="tag">Responsive</span>
+      <div id="logs"></div>
+
+      <!-- Interactive Input Line -->
+      <div class="input-line">
+        <span class="prompt">yash@arch-linux:~$</span>
+        <input type="text" id="cli-input" placeholder="type command..." autofocus autocomplete="off">
       </div>
-
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>HTML5</li>
-      <li>CSS3</li>
-      <li>JavaScript</li>
-      <li>Git & GitHub</li>
-      <li>Responsive Design</li>
-    </ul>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
-    <form id="contact-form">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-    <p id="form-status" class="status-msg"></p>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Alex. All rights reserved.</p>
-  </footer>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>

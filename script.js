@@ -1,18 +1,116 @@
-// Wait for the DOM content to load before attaching listeners
-document.addEventListener('DOMContentLoaded', () => {
-  const contactForm = document.getElementById('contact-form');
-  const statusMsg = document.getElementById('form-status');
+const cliInput = document.getElementById('cli-input');
+const logs = document.getElementById('logs');
+const terminalBody = document.getElementById('terminal-output');
 
-  // Handle form submission
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent page refresh on submit
+// Command database
+const commands = {
+  about: `
+    <div class="card">
+      <h4>Yash Vekariya</h4>
+      <p>Integrated BS-MS in Mathematics & Computing @ NIT Agartala.</p>
+      <p>Focusing on C++ algorithms, machine learning pipelines, and Linux systems administration.</p>
+    </div>`,
+  skills: `
+    <div class="card">
+      <h4>Technical Stack</h4>
+      <p><b>Languages:</b> C++, Python, JavaScript, HTML, CSS</p>
+      <p><b>Frameworks & ML:</b> FastAPI, PyTorch, Scikit-learn, OpenCV, Pandas</p>
+      <p><b>Environment:</b> Arch Linux (Hyprland), Git, ONNX, RKNN</p>
+    </div>`,
+  projects: `
+    <a href="https://yash-vekariya04.github.io/Portfolio/">
+        <div class="card">
+        <h4>1. Portfolio</h4>
+        <p>YOLOv8 vision pipeline fine-tuned on aerial datasets and deployed via ONNX/RKNN on embedded NPU hardware.</p>
+        </div>
+    </a>
+    <a href="https://yash-vekariya04.github.io/Portfolio/">
+        <div class="card">
+        <h4>1. Edge Detection Drone Pipeline</h4>
+        <p>YOLOv8 vision pipeline fine-tuned on aerial datasets and deployed via ONNX/RKNN on embedded NPU hardware.</p>
+        </div>
+    </a>
+    <a href="https://yash-vekariya04.github.io/Portfolio/">
+        <div class="card">
+        <h4>2. AI Crop Recommendation Backend</h4>
+        <p>Smart India Hackathon project analyzing soil and climate metrics using Scikit-learn and Pandas.</p>
+        </div>
+    </a>
+    <a href="https://yash-vekariya04.github.io/Portfolio/">
+        <div class="card">
+        <h4>3. Local Voice Assistant</h4>
+        <p>FastAPI WebSocket architecture executing local LLMs with Edge-TTS speech output.</p>
+        </div>
+    </a>`,
+  help: `
+    <p>Available commands: <span class="accent">about</span>, <span class="accent">skills</span>, <span class="accent">projects</span>, <span class="accent">clear</span></p>`
+};
 
-    const name = document.getElementById('name').value;
+// Handle CLI text submission
+cliInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const cmd = cliInput.value.trim().toLowerCase();
+    runCommand(cmd);
+    cliInput.value = '';
+  }
+});
 
-    // Display a simple confirmation message
-    statusMsg.textContent = `Thank you, ${name}! Your message has been received.`;
+// cliInput.addEventListener('click', (c) => {
+//     if (c.clientX)
+// })
 
-    // Clear form inputs
-    contactForm.reset();
-  });
+function runCommand(cmd) {
+  if (cmd === 'clear') {
+    logs.innerHTML = '';
+    return;
+  }
+
+  const entry = document.createElement('div');
+  entry.className = 'log-entry';
+
+  if (commands[cmd]) {
+    entry.innerHTML = `<p><span class="prompt">yash@arch-linux:~$</span> <span class="cmd">${cmd}</span></p>${commands[cmd]}`;
+  } else if (cmd !== '') {
+    entry.innerHTML = `<p><span class="prompt">yash@arch-linux:~$</span> <span class="cmd">${cmd}</span></p><p style="color:#f7768e;">Command not found. Type 'help' for available commands.</p>`;
+  }
+
+  logs.appendChild(entry);
+  terminalBody.scrollTop = terminalBody.scrollHeight;
+}
+
+// Canvas Matrix Rain Visual Effect
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const chars = '01101001010101';
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({ length: columns }).fill(1);
+
+function drawMatrix() {
+  ctx.fillStyle = 'rgba(13, 15, 24, 0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = '#7aa2f7';
+  ctx.font = `${fontSize}px monospace`;
+
+  for (let i = 0; i < drops.length; i++) {
+    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix, 50);
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 });
