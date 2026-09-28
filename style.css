@@ -1,4 +1,4 @@
-/* Reset & Basic Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,6 @@ body {
   background-color: #f8f9fa;
 }
 
-/* Navigation Bar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -50,7 +49,6 @@ body {
   color: #00adb5;
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
   padding: 5rem 1rem;
@@ -88,7 +86,6 @@ body {
   background-color: #008c9e;
 }
 
-/* General Section Layout */
 .section {
   max-width: 900px;
   margin: auto;
@@ -102,7 +99,6 @@ body {
   color: #1a1a2e;
 }
 
-/* Projects Grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -133,7 +129,6 @@ body {
   border-radius: 4px;
 }
 
-/* Skills List */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -175,7 +170,6 @@ body {
   color: #2e7d32;
 }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 1.5rem;
