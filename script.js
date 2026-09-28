@@ -49,7 +49,7 @@ const commands = {
 // Handle CLI text submission
 cliInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
-    const cmd = cliInput.value.trim().toLowerCase();
+    const cmd = cliInput.value.trim().toLowerCase(); //Trims and stores the value of the cli command in cmd
     runCommand(cmd);
     cliInput.value = ''; //cleaning the input for next command
   }
@@ -57,22 +57,23 @@ cliInput.addEventListener('keydown', (e) => {
 
 
 function runCommand(cmd) {
+  // if we want to clear the terminal
   if (cmd === 'clear') {
-    logs.innerHTML = '';
+    logs.innerHTML = ''; // clear the logs(div) if it has any entry(div)
     return;
   }
 
-  const entry = document.createElement('div');
-  entry.className = 'log-entry';
+  const entry = document.createElement('div'); // make a div
+  entry.className = 'log-entry'; // give the class log-entry to entry(div)
 
-  if (commands[cmd]) {
+  if (commands[cmd]) { // If comand is there in the dictionary 
     entry.innerHTML = `<p><span class="prompt">yash@arch-linux:~$</span> <span class="cmd">${cmd}</span></p>${commands[cmd]}`;
-  } else if (cmd !== '') {
+  } else if (cmd !== '') { // if the comand is not in the dictionary return an error
     entry.innerHTML = `<p><span class="prompt">yash@arch-linux:~$</span> <span class="cmd">${cmd}</span></p><p style="color:#f7768e;">Command not found. Type 'help' for available commands.</p>`;
   }
 
-  logs.appendChild(entry);
-  terminalBody.scrollTop = terminalBody.scrollHeight;
+  logs.appendChild(entry); // we add the entry(div) with its content inside the log(div) inside the html code
+  terminalBody.scrollTop = terminalBody.scrollHeight; // scroll down to the last command
 }
 
 // Canvas Matrix Rain Visual Effect

@@ -44,11 +44,13 @@ __   ___   ____  _   _   __   _______ _  __   _    ____   ________   ___
         <button onclick="runCommand('clear')">clear</button>
       </div>
 
+      <!-- to store what is the output of the previous comand -->
       <div id="logs"></div>
 
       <!-- Interactive Input Line -->
       <div class="input-line">
-        <span class="prompt">yash@arch-linux:~$</span>
+        <!-- visual line which tell the address and username of the linux user -->
+        <span class="prompt">yash@arch-linux:~$</span> 
         <input type="text" id="cli-input" placeholder="type command..." autofocus autocomplete="off">
       </div>
     </section>
