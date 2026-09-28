@@ -21,7 +21,7 @@ const commands = {
     <a href="https://yash-vekariya04.github.io/Portfolio/">
         <div class="card">
         <h4>1. Portfolio</h4>
-        <p>YOLOv8 vision pipeline fine-tuned on aerial datasets and deployed via ONNX/RKNN on embedded NPU hardware.</p>
+        <p></p>
         </div>
     </a>
     <a href="https://yash-vekariya04.github.io/Portfolio/">
