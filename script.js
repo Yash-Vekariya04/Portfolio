@@ -2,7 +2,7 @@ const cliInput = document.getElementById('cli-input');
 const logs = document.getElementById('logs');
 const terminalBody = document.getElementById('terminal-output');
 
-// Command database
+// Command database using Object literal
 const commands = {
   about: `
     <div class="card">
