@@ -92,7 +92,7 @@ function drawMatrix() {
   ctx.fillStyle = 'rgba(13, 15, 24, 0.05)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = '#7aa2f7';
+  ctx.fillStyle = 'rgb(122, 162, 247)';
   ctx.font = `${fontSize}px monospace`;
 
   for (let i = 0; i < drops.length; i++) {
